@@ -103,6 +103,7 @@ if __name__ == '__main__':
     end_id = int(args[1]) + 1
     
     f_errors = open("errors" + "_" + str(start_id) + "_" + str(start_id) + ".csv","a")
+    if not os.path.exists("data"): os.makedirs("data")
     
     fieldnames_data = ("ID","URL","NAME","ADDRLOC_JUR","ADDRLOC_IP","ADDR_ACT","ADDR_OBJ","OGRN","INN","GOAL","OSN_DATESTART","OSN_DATEEND","OSN_DATESTART2","OSN_OTHER","CHECK_MONTH","CHECK_DAYS","CHECK_HOURS","CHECK_FORM","CHECK_ORG")
     f_data = open("data" + "_" + str(start_id) + "_" + str(start_id) + ".csv","wb")
