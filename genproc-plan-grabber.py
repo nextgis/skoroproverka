@@ -2,9 +2,9 @@
 # ---------------------------------------------------------------------------
 # genproc-plan-grabber.py
 # Author: Maxim Dubinin (sim@gis-lab.info)
-# About: Grab http://plan.genproc.gov.ru/plan2014 data on участковые, creates two tables linked with unique id, policemen and locations they are responsible for.
+# About: Grab http://plan.genproc.gov.ru/plan2014 data on organizations checks. Simply iterate through id and get contents.
 # Created: 22:05 28.12.2013
-# Usage example: python genproc-plan-grabber.py
+# Usage example: python genproc-plan-grabber.py 1 100001
 # ---------------------------------------------------------------------------
 
 import urllib
