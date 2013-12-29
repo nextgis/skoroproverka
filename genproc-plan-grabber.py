@@ -119,6 +119,8 @@ if __name__ == '__main__':
                 parse_org(id)
             else:
                 f_errors.write(id + "," + link + ", unavailable" + "\n")
+        else:
+            print("Listing for id " + id + " already exists")
         
     f_data.close()
     f_errors.close()
