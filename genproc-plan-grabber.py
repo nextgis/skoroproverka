@@ -113,11 +113,12 @@ if __name__ == '__main__':
         id = str(id)
         link = "http://plan.genproc.gov.ru/plan2014/detail.php?ID=" + id
         
-        success = download_org(link,id)
-        if success == True:
-            parse_org(id)
-        else:
-            f_errors.write(id + "," + link + ", unavailable" + "\n")
+        if not os.path.exists("data/" + id + ".html"):
+            success = download_org(link,id)
+            if success == True:
+                parse_org(id)
+            else:
+                f_errors.write(id + "," + link + ", unavailable" + "\n")
         
     f_data.close()
     f_errors.close()
