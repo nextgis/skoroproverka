@@ -102,18 +102,18 @@ if __name__ == '__main__':
     start_id = int(args[0])
     end_id = int(args[1]) + 1
     
-    f_errors = open("errors" + "_" + str(start_id) + "_" + str(start_id) + ".csv","a")
+    f_errors = open("errors" + "_" + str(start_id) + "_" + str(end_id) + ".csv","a")
     if not os.path.exists("data"): os.makedirs("data")
     
     fieldnames_data = ("ID","URL","NAME","ADDRLOC_JUR","ADDRLOC_IP","ADDR_ACT","ADDR_OBJ","OGRN","INN","GOAL","OSN_DATESTART","OSN_DATEEND","OSN_DATESTART2","OSN_OTHER","CHECK_MONTH","CHECK_DAYS","CHECK_HOURS","CHECK_FORM","CHECK_ORG")
-    f_data = open("data" + "_" + str(start_id) + "_" + str(start_id) + ".csv","wb")
+    f_data = open("data" + "_" + str(start_id) + "_" + str(end_id) + ".csv","wb")
     csvwriter = csv.DictWriter(f_data, fieldnames=fieldnames_data)
     
     for id in range(start_id,end_id):
         id = str(id)
         link = "http://plan.genproc.gov.ru/plan2014/detail.php?ID=" + id
         
-        if not os.path.exists("data/" + id + ".html"):
+        if not os.path.exists("data/" + id + ".html") or os.stat("data/" + id + ".html")[6]==0:
             success = download_org(link,id)
             if success == True:
                 parse_org(id)
