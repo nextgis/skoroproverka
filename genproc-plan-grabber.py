@@ -20,10 +20,19 @@ import datetime
 import time
 
 def console_out(text):
-    timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    tab = "    "
-    print(timestamp + tab + text)
-
+    global time_prev
+    time_current = datetime.datetime.now()
+    timestamp = time_current.strftime('%Y-%m-%d %H:%M:%S')
+    
+    if time_prev == 0:
+        timedif = ""
+    else:
+        timedif = str((time_current - time_prev).seconds)
+    
+    spaces = " "*(4 - len(timedif))
+    print(timestamp + "  " + timedif + spaces + text)
+    time_prev = time_current
+    
 def download_org(link,id):
     numtries = 5
     for i in range(1,numtries+1):
@@ -123,9 +132,11 @@ if __name__ == '__main__':
     start_id = int(args[0])
     end_id = int(args[1]) + 1
     
+    time_prev = 0
+    
     f_errors = open("errors" + "_" + str(start_id) + "_" + str(end_id) + ".csv","a")
     if not os.path.exists("data"): os.makedirs("data")
-    
+       
     fieldnames_data = ("ID","URL","NAME","ADDRLOC_JUR","ADDRLOC_IP","ADDR_ACT","ADDR_OBJ","OGRN","INN","GOAL","OSN_DATESTART","OSN_DATEEND","OSN_DATESTART2","OSN_OTHER","CHECK_MONTH","CHECK_DAYS","CHECK_HOURS","CHECK_FORM","CHECK_ORG")
     f_data = open("data" + "_" + str(start_id) + "_" + str(end_id) + ".csv","wb")
     csvwriter = csv.DictWriter(f_data, fieldnames=fieldnames_data)
