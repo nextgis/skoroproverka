@@ -17,6 +17,7 @@ import sys
 import os
 import ucsv as csv
 import datetime
+import time
 
 def console_out(text):
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
