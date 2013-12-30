@@ -16,12 +16,17 @@ from bs4 import BeautifulSoup
 import sys
 import os
 import ucsv as csv
-from datetime import datetime
-import time
+import datetime
+
+def console_out(text):
+    timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    tab = "    "
+    print(timestamp + tab + text)
 
 def download_org(link,id):
     numtries = 5
     for i in range(1,numtries+1):
+        i = str(i)
         try:
             #user_agent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)"
             #headers = { 'User-Agent' : user_agent }
@@ -32,13 +37,13 @@ def download_org(link,id):
             u = urllib2.urlopen(link, timeout = 20)
         except urllib2.URLError, e:
             if hasattr(e, 'reason'):
-                print 'We failed to reach a server for ID:' + id + ' Reason: ' + str(e.reason) + '.' + ' Attempt: ' + str(i)
+                console_out('We failed to reach a server for ID:' + id + ' Reason: ' + str(e.reason) + '.' + ' Attempt: ' + i)
             elif hasattr(e, 'code'):
-                print 'The server couldn\'t fulfill the request for ID: ' + id + ' Error code: ' + str(e.code) + '.' + ' Attempt: ' + str(i)
+                console_out('The server couldn\'t fulfill the request for ID: ' + id + ' Error code: ' + str(e.code) + '.' + ' Attempt: ' + i)
             success = False
             time.sleep(3)
         except socket.timeout, e:
-            print 'Connection timed out on urlopen() for ID: ' + id + '.' + ' Attempt: ' + str(i)
+            console_out('Connection timed out on urlopen() for ID: ' + id + '.' + ' Attempt: ' + i)
             success = False
             time.sleep(3)
         else:
@@ -46,14 +51,14 @@ def download_org(link,id):
 	    try:
                 r = u.read()
 	    except socket.timeout, e:
-                print 'Connection timed out on socket.read() for ID: ' + id + '.' + ' Attempt: ' + str(i)
+                console_out('Connection timed out on socket.read() for ID: ' + id + '.' + ' Attempt: ' + i)
                 success = False
                 u.close()
                 time.sleep(3)
 	    else:
                 f.write(r)
                 f.close()
-                print("Listing for id " + id + " was downloaded")
+                console_out("Listing for id " + id + " was downloaded")
                 success = True
                 break
     
@@ -135,7 +140,7 @@ if __name__ == '__main__':
             else:
                 f_errors.write(id + "," + link + ", unavailable" + "\n")
         else:
-            print("Listing for id " + id + " already exists")
+            console_out("Listing for id " + id + " already exists")
         
     f_data.close()
     f_errors.close()
