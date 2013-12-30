@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# vim:et
 # ---------------------------------------------------------------------------
 # genproc-plan-grabber.py
 # Author: Maxim Dubinin (sim@gis-lab.info)
@@ -42,11 +43,19 @@ def download_org(link,id):
             time.sleep(3)
         else:
             f = open("data/" + id + ".html","wb")
-            f.write(u.read())
-            f.close()
-            print("Listing for id " + id + " was downloaded")
-            success = True
-            break
+	    try:
+                r = u.read()
+	    except socket.timeout, e:
+                print 'Connection timed out on socket.read() for ID: ' + id + '.' + ' Attempt: ' + str(i)
+                success = False
+                u.close()
+                time.sleep(3)
+	    else:
+                f.write(r)
+                f.close()
+                print("Listing for id " + id + " was downloaded")
+                success = True
+                break
     
     return success
     
