@@ -8,8 +8,9 @@
 # Usage example: python genproc-plan-grabber.py 1 100001
 # ---------------------------------------------------------------------------
 
-import urllib
+#import urllib
 import urllib2
+import socket
 from bs4 import BeautifulSoup
 import sys
 import os
@@ -27,12 +28,16 @@ def download_org(link,id):
             #data = urllib.urlencode(values)
             #req = urllib2.Request(link, data, headers)
             #u = urllib2.urlopen(req)
-            u = urllib2.urlopen(link)
+            u = urllib2.urlopen(link, timeout = 20)
         except urllib2.URLError, e:
             if hasattr(e, 'reason'):
                 print 'We failed to reach a server for ID:' + id + ' Reason: ' + str(e.reason) + '.' + ' Attempt: ' + str(i)
             elif hasattr(e, 'code'):
                 print 'The server couldn\'t fulfill the request for ID: ' + id + ' Error code: ' + str(e.code) + '.' + ' Attempt: ' + str(i)
+            success = False
+            time.sleep(3)
+        except socket.timeout, e:
+            print 'Connection timed out on urlopen() for ID: ' + id + '.' + ' Attempt: ' + str(i)
             success = False
             time.sleep(3)
         else:
