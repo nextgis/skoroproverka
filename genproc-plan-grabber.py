@@ -1,4 +1,4 @@
-#!/usr/bin/env python -u
+#!/usr/bin/env python -uaaaaaaaaa3iuu58ukj
 # -*- coding: utf-8 -*-
 # vim:et
 # ---------------------------------------------------------------------------
@@ -35,6 +35,8 @@ def console_out(text):
     
 def download_org(link,id):
     numtries = 5
+    timeoutvalue = 40
+    
     for i in range(1,numtries+1):
         i = str(i)
         try:
@@ -44,7 +46,7 @@ def download_org(link,id):
             #data = urllib.urlencode(values)
             #req = urllib2.Request(link, data, headers)
             #u = urllib2.urlopen(req)
-            u = urllib2.urlopen(link, timeout = 20)
+            u = urllib2.urlopen(link, timeout = timeoutvalue)
         except urllib2.URLError, e:
             if hasattr(e, 'reason'):
                 console_out('We failed to reach a server for ID:' + id + ' Reason: ' + str(e.reason) + '.' + ' Attempt: ' + i)
