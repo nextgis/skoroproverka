@@ -1,4 +1,4 @@
-#!/usr/bin/env python -uaaaaaaaaa3iuu58ukj
+#!/usr/bin/env python -u
 # -*- coding: utf-8 -*-
 # vim:et
 # ---------------------------------------------------------------------------
