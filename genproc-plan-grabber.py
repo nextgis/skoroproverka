@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python -u
 # -*- coding: utf-8 -*-
 # vim:et
 # ---------------------------------------------------------------------------
@@ -68,7 +68,7 @@ def download_org(link,id):
 	    else:
                 f.write(r)
                 f.close()
-                console_out("Listing for id " + id + " was downloaded")
+                console_out("Listing " + id + " downloaded")
                 success = True
                 break
     
