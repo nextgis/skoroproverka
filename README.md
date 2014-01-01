@@ -7,4 +7,6 @@ genproc2014
 
 Результаты (текущие): http://m-d.me/data/genproc_checkplan2014.zip
 
+Прогресс: 2 блока из 71 (3%)
+
 Пример данных для просмотра: https://www.google.com/fusiontables/DataSource?docid=1hS1bJxdumyF4BVjVvTvT_pm0E9oqBNiax_W3vj8
