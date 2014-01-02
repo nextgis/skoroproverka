@@ -31,7 +31,7 @@ def parse_org(id):
         else:
             tds = maintable.findAll("td")
             
-            if len(tds) < 33:
+            if len(tds) < 32:
                 name = addrloc_jur = addrloc_ip = addr_act = addr_obj = ogrn = inn = goal = osn_datestart = osn_dateend = osn_datestart2 = osn_other = check_month = check_days = check_hours = check_form = check_org = "ERROR"
                 f_errors.write(id + "," + link + ", incorrect data" + "\n")
             else:
@@ -47,7 +47,10 @@ def parse_org(id):
                 osn_dateend = list(tds[19].strings)[0]
                 osn_datestart2 = list(tds[21].strings)[0]
                 osn_other = list(tds[23].strings)[0]
-                check_month = list(tds[25].strings)[0]
+                if list(tds[25].strings) != []:
+                    check_month = list(tds[25].strings)[0]
+                else:
+                    check_month = ""
                 check_days = list(tds[27].strings)[0]
                 check_hours = list(tds[29].strings)[0]
                 check_form = list(tds[31].strings)[0]
