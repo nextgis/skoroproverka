@@ -8,7 +8,7 @@ genproc2014
 Результаты (текущие)
   - Обработанные данные (CSV): http://m-d.me/data/genproc_checkplan2014.7z
   - Исходные данные (HTML): http://m-d.me/data/genproc_checkplan2014_src.7z
-  - Пример данных для просмотра: https://www.google.com/fusiontables/DataSource?docid=1hS1bJxdumyF4BVjVvTvT_pm0E9oqBNiax_W3vj8
+  - Фрагмент набора данных готовый для просмотра: https://www.google.com/fusiontables/DataSource?docid=1hS1bJxdumyF4BVjVvTvT_pm0E9oqBNiax_W3vj8
 
-Прогресс: 8 блоков из 71 (11%)
+Прогресс: 12 блоков из 71 (17%)
 
