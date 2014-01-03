@@ -11,6 +11,7 @@
 
 #import urllib
 import urllib2
+from httplib import BadStatusLine
 import socket
 import sys
 import os
@@ -45,6 +46,10 @@ def download_org(link,id):
             #req = urllib2.Request(link, data, headers)
             #u = urllib2.urlopen(req)
             u = urllib2.urlopen(link, timeout = timeoutvalue)
+        except BadStatusLine:
+            console_out('BadStatusLine for ID:' + id + '.' + ' Attempt: ' + i)
+            success = False
+            time.sleep(3)
         except urllib2.URLError, e:
             if hasattr(e, 'reason'):
                 console_out('We failed to reach a server for ID:' + id + ' Reason: ' + str(e.reason) + '.' + ' Attempt: ' + i)
