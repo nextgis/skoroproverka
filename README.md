@@ -1,7 +1,7 @@
 genproc2014
 ===========
 
-Граббер для списков проверок предпринимателей в 2014
+Граббер и парсер для списков проверок предпринимателей в 2014
 
 Описание процесса: http://ether.gis-lab.info/genproc
 
@@ -10,5 +10,5 @@ genproc2014
   - Исходные данные (HTML): http://m-d.me/data/genproc_checkplan2014_src.7z
   - Фрагмент набора данных готовый для просмотра: https://www.google.com/fusiontables/DataSource?docid=1hS1bJxdumyF4BVjVvTvT_pm0E9oqBNiax_W3vj8
 
-Прогресс: 16 блоков из 71 (23%)
+Прогресс: 19 блоков из 71 (27%)
 
