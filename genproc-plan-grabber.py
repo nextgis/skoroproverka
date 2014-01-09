@@ -11,7 +11,7 @@
 
 #import urllib
 import urllib2
-from httplib import BadStatusLine
+from httplib import BadStatusLine,IncompleteRead
 import socket
 import sys
 import os
@@ -63,14 +63,19 @@ def download_org(link,id):
             time.sleep(3)
         else:
             f = open("data/" + id + ".html","wb")
-	    try:
+        try:
                 r = u.read()
-	    except socket.timeout, e:
+        except socket.timeout, e:
                 console_out('Connection timed out on socket.read() for ID: ' + id + '.' + ' Attempt: ' + i)
                 success = False
                 u.close()
                 time.sleep(3)
-	    else:
+        except IncompleteRead:
+                console_out('Incomplete read on socket.read() for ID: ' + id + '.' + ' Attempt: ' + i)
+                success = False
+                u.close()
+                time.sleep(3)
+        else:
                 f.write(r)
                 f.close()
                 console_out("Listing " + id + " downloaded")
