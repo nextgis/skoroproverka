@@ -39,7 +39,10 @@ def parse_org(id):
                 addrloc_jur = list(tds[3].strings)[0]
                 addrloc_ip = list(tds[5].strings)[0]
                 addr_act = list(tds[7].strings)[0]
-                addr_obj = list(tds[9].strings)[0]
+                if list(tds[9].strings) != []:
+                    addr_obj = list(tds[9].strings)[0]
+                else
+                    addr_obj = ""
                 ogrn = list(tds[11].strings)[0]
                 inn = list(tds[13].strings)[0]
                 goal = list(tds[15].strings)[0]
@@ -79,7 +82,7 @@ def parse_org(id):
                                 CHECK_ORG=check_org.strip()))
 
 if __name__ == '__main__':
-    os.chdir("data")
+    os.chdir("data-test")
     f_errors = open("../errors.csv","wb")
        
     fieldnames_data = ("ID","SUBID","URL","NAME","ADDRLOC_JUR","ADDRLOC_IP","ADDR_ACT","ADDR_OBJ","OGRN","INN","GOAL","OSN_DATESTART","OSN_DATEEND","OSN_DATESTART2","OSN_OTHER","CHECK_MONTH","CHECK_DAYS","CHECK_HOURS","CHECK_FORM","CHECK_ORG")
