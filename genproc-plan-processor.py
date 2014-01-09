@@ -82,7 +82,7 @@ def parse_org(id):
                                 CHECK_ORG=check_org.strip()))
 
 if __name__ == '__main__':
-    os.chdir("data-test")
+    os.chdir("data")
     f_errors = open("../errors.csv","wb")
        
     fieldnames_data = ("ID","SUBID","URL","NAME","ADDRLOC_JUR","ADDRLOC_IP","ADDR_ACT","ADDR_OBJ","OGRN","INN","GOAL","OSN_DATESTART","OSN_DATEEND","OSN_DATESTART2","OSN_OTHER","CHECK_MONTH","CHECK_DAYS","CHECK_HOURS","CHECK_FORM","CHECK_ORG")
