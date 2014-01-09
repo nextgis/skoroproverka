@@ -89,8 +89,8 @@ if __name__ == '__main__':
     
     for id in glob.glob("*.html"):
         link = "http://plan.genproc.gov.ru/plan2014/detail.php?ID=" + id.replace(".html","")
+        print("Processing id " + id)
         parse_org(id)
-        print("Listing for id " + id + " processed")
         
     f_data.close()
     f_errors.close()
