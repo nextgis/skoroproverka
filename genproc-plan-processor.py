@@ -47,7 +47,10 @@ def parse_org(id):
                 inn = list(tds[13].strings)[0]
                 goal = list(tds[15].strings)[0]
                 osn_datestart = list(tds[17].strings)[0]
-                osn_dateend = list(tds[19].strings)[0]
+                if list(tds[19].strings) != []:
+                    osn_dateend = list(tds[19].strings)[0]
+                else:
+                    osn_dateend = ""
                 osn_datestart2 = list(tds[21].strings)[0]
                 osn_other = list(tds[23].strings)[0]
                 if list(tds[25].strings) != []:
