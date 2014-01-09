@@ -41,7 +41,7 @@ def parse_org(id):
                 addr_act = list(tds[7].strings)[0]
                 if list(tds[9].strings) != []:
                     addr_obj = list(tds[9].strings)[0]
-                else
+                else:
                     addr_obj = ""
                 ogrn = list(tds[11].strings)[0]
                 inn = list(tds[13].strings)[0]
