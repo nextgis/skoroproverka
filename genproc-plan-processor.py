@@ -55,7 +55,10 @@ def parse_org(id):
                     osn_datestart2 = list(tds[21].strings)[0]
                 else:
                     osn_datestart2 = ""
-                osn_other = list(tds[23].strings)[0]
+                if list(tds[23].strings) != []:
+                    osn_other = list(tds[23].strings)[0]
+                else:
+                    osn_other = ""
                 if list(tds[25].strings) != []:
                     check_month = list(tds[25].strings)[0]
                 else:
