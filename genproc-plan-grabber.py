@@ -33,8 +33,10 @@ def console_out(text):
     time_prev = time_current
     
 def download_org(link,id):
+    global time_prev
     numtries = 5
     timeoutvalue = 40
+    timeinterval = 6
     
     for i in range(1,numtries+1):
         i = str(i)
@@ -82,6 +84,10 @@ def download_org(link,id):
                 success = True
                 break
     
+    time_current = datetime.datetime.now()
+    time_diff = (time_current - time_prev).seconds
+    if time_diff < timeinterval:
+        time.sleep(timeinterval - time_diff)
     return success
     
 if __name__ == '__main__':
