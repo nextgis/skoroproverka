@@ -10,5 +10,5 @@ genproc2014
   - Исходные данные (HTML): http://m-d.me/data/genproc_checkplan2014_src.7z
   - Фрагмент набора данных готовый для просмотра: https://www.google.com/fusiontables/DataSource?docid=1hS1bJxdumyF4BVjVvTvT_pm0E9oqBNiax_W3vj8
 
-Прогресс: 42 блока из 71 (59%)
+Прогресс: 50 блоков из 71 (70%)
 
