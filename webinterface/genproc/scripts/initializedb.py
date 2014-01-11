@@ -39,8 +39,8 @@ def main(argv=sys.argv):
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
-    load_data('genproc/scripts/data/genproc_checkplan2014_data1.csv')
+    load_data('genproc/scripts/data/genproc_checkplan2014_data.csv')
 
-    with transaction.manager:
-        model = Genproc(name='one-one', ogrn='sdf', inn='sdf', genproc_id='123')
-        DBSession.add(model)
+#    with transaction.manager:
+#        model = Genproc(name='one-one', ogrn='sdf', inn='sdf', genproc_id='123')
+#        DBSession.add(model)

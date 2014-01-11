@@ -27,7 +27,7 @@ class Genproc(Base):
     # Далее идут оригинальные поля,
     # но к полю id от генпрокуратуры добавлен
     # префикс genproc_
-    genproc_id = Column(Text, nullable=False)
+    genproc_id = Column(Text)
     subid = Column(Text)
     url = Column(Text)
     name = Column(Text, nullable=False, index=True)
@@ -35,8 +35,8 @@ class Genproc(Base):
     addrloc_ip = Column(Text)
     addr_act = Column(Text)
     addr_obj = Column(Text)
-    ogrn = Column(Text, nullable=False, index=True)
-    inn = Column(Text, nullable=False, index=True)
+    ogrn = Column(Text, index=True)
+    inn = Column(Text, index=True)
     goal = Column(Text)
     osn_datestart = Column(Text)
     osn_dateend = Column(Text)

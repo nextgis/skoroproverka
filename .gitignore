@@ -1,0 +1,3 @@
+*.pyc
+webinterface/genproc.egg-info/
+webinterface/genproc/scripts/data/
