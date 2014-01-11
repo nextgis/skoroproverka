@@ -11,4 +11,3 @@ genproc2014
   - Фрагмент набора данных готовый для просмотра: https://www.google.com/fusiontables/DataSource?docid=1hS1bJxdumyF4BVjVvTvT_pm0E9oqBNiax_W3vj8
 
 Прогресс: 50 блоков из 71 (70%)
-
