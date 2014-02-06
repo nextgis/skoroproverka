@@ -5,6 +5,7 @@ from sqlalchemy import (
     Index,
     Integer,
     Text,
+    func,
     event,
     DDL
 )
@@ -36,6 +37,26 @@ class TsVector(UserDefinedType):
 
     def get_col_spec(self):
         return self.name
+
+    class comparator_factory(UserDefinedType.Comparator):
+        """Defines custom types for tsvectors.
+
+        Specifically, the ability to search for ts_query strings using
+        the @@ operator.
+
+        On the Python side, this is implemented simply as a `==` operation.
+
+        So, you can do
+          Table.tsvector_column == "string"
+        to get the same effect as
+          tsvector_column @@ to_tsquery('string')
+        in SQL
+
+        """
+
+        def __eq__(self, other):
+            print func.plainto_tsquery(other)
+            return self.op('@@')(func.plainto_tsquery('russian', other))
 
 
 

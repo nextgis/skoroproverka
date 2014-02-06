@@ -78,6 +78,17 @@ def genpoc_by_ogrn(request):
 
     return result
 
+@view_config(route_name='text', renderer='json')
+def text_search(request):
+    dbsession = DBSession()
+    substr = request.matchdict['substr'].encode('utf-8')
+    rows = dbsession.query(Genproc).filter(Genproc.details_tsvector == substr).limit(LIMIT)
+    result = []
+    for row in rows:
+        result.append({'id': row.id, 'name': row.name, 'ogrn': row.ogrn, 'inn': row.inn})
+
+    return result
+
 
 @view_config(route_name='substr', renderer='json')
 def substr(request):

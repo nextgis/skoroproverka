@@ -21,6 +21,7 @@ def main(global_config, **settings):
     config.add_route('id',      '/{id}')
     config.add_route('ogrn',    '/ogrn/{ogrn}')
     config.add_route('substr',  'substr/{substr}')
+    config.add_route('text',    'text/{substr}')
 
     config.scan()
     return config.make_wsgi_app()
