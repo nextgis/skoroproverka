@@ -80,7 +80,7 @@ trigger_snippet = DDL("""
     CREATE TRIGGER details_tsvector_update BEFORE INSERT OR UPDATE
     ON genproc
     FOR EACH ROW EXECUTE PROCEDURE
-    tsvector_update_trigger(details_tsvector,'pg_catalog.russian', 'name')
+    tsvector_update_trigger(details_tsvector,'pg_catalog.russian', 'name', 'inn', 'ogrn')
 """)
 
 event.listen(Genproc.__table__, 'after_create', trigger_snippet.execute_if(dialect = 'postgresql'))
