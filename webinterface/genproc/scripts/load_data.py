@@ -42,6 +42,7 @@ fieldmap = (
 )
 
 def load_data(file_name):
+    i = 0
     print 'Importing...'
     f = csv.DictReader(open(file_name), delimiter=',', quotechar='"')
     with transaction.manager:
@@ -51,4 +52,7 @@ def load_data(file_name):
             for source_name, target_name in fieldmap:
                 setattr(line, target_name, None if row[source_name] == '' else row[source_name])
             DBSession.add(line)
+    	    transaction.manager.commit()
+            print i
+            i += 1
 
