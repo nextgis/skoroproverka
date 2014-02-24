@@ -16,4 +16,4 @@ skoroproverka
  - расчеты и визуализации - R
 
 Сервис для конечных пользователей:
-http://skoroproverka.info
+coming soon
