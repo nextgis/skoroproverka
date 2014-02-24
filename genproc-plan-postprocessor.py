@@ -29,20 +29,38 @@ def process_datestart(datestart):
     
     return res
 
+def process_goal(goal):
+    goals = [u"ЭПИД",u"ПОЖАР",u"ПРОМЫШЛ",u"ЭКОЛОГ",u"ДОРОЖ",u"УСТАВ",u"ВЕТЕРИН",u"ЗЕМЕЛ",u"ПРИРОДООХР",u"ТРУД",u"ЭНЕРГ",u"ОРУЖ",u"АЛКОГ",u"ОКРУЖАЮЩ",u"ТРАНСПОРТ",u"ОБРАЗОВА",u"АТОМН",u"ФАРМАЦ",u"ФИТОСАН",u"РАСТЕН"]
+    goals.append(u"ЛИЦЕНЗ")
+    goals_codes = [u"эпидемиологический",u"пожарный",u"промышленный",u"экологический",u"дорожный",u"уставной",u"ветеринарный",u"земельный",u"природоохранный",u"трудовой",u"энергетический",u"оружейный",u"алкогольный",u"экологический",u"транспортный",u"образовательный",u"атомный",u"фармацевтический",u"фитосанитарный",u"фитосанитарный"]
+    goals_codes.append(u"лицензионный")
+    
+    i = 0
+    res = ""
+    while res == "" and i < len(goals):
+        if goals[i] in goal.decode("utf-8").upper():
+            res = goals_codes[i]
+        else:
+            res = ""
+            i = i + 1
+    
+    return res.encode("utf-8")
+
 if __name__ == '__main__':
     #set input file - data
-    fn_in = "genproc_checkplan2014_data_subset.csv"
+    fn_in = "testdata/genproc_checkplan2014_data_subset.csv"
     f_in = open(fn_in,'rb')
     csvreader = csv.DictReader(f_in)
     field_names = csvreader.fieldnames
     field_names.append('CHECK_MONTH_PROC')
     field_names.append('OSN_DATESTART_PROC')
     field_names.append('OGRN_REGION')
+    field_names.append('GOAL_PROC')
 
     fields_str = ",".join(field_names)
 
     #set output file - postprocessed data
-    fn_out = "genproc_checkplan2014_data_subset_pp.csv"
+    fn_out = "testdata/genproc_checkplan2014_data_subset_pp.csv"
     ftemp = open(fn_out,"wb")
     ftemp.write(fields_str + "\n")
     ftemp.close()
@@ -64,6 +82,7 @@ if __name__ == '__main__':
         ogrn_region = process_region(row['OGRN'])
         inn = row['INN']
         goal = row['GOAL']
+        goal_proc = process_goal(row['GOAL'])
         osn_datestart = row['OSN_DATESTART']
         osn_datestart_proc = process_datestart(row['OSN_DATESTART'])
         osn_dateend = row['OSN_DATEEND']
@@ -88,6 +107,7 @@ if __name__ == '__main__':
                                 OGRN_REGION=ogrn_region,
                                 INN=inn,
                                 GOAL=goal,
+                                GOAL_PROC=goal_proc,
                                 OSN_DATESTART=osn_datestart,
                                 OSN_DATESTART_PROC=osn_datestart_proc,
                                 OSN_DATEEND=osn_dateend,

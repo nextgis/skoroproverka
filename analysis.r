@@ -9,7 +9,7 @@
 
 setwd("d:\\Programming\\Python\\genproc-plan\\!old\\")
 
-fn = "genproc_checkplan2014_data_subset_pp.csv"
+fn = "testdata/genproc_checkplan2014_data_subset_pp.csv"
 #cC = c("numeric","numeric","NULL","factor","NULL","factor","factor","factor","factor","factor","factor","factor","factor","factor","factor","factor","factor","factor","factor")
 
 #cC = c("URL"="NULL","ADDRLOC_IP"="NULL","OSN_DATESTART"="Date")
@@ -47,7 +47,10 @@ barplot(table(year))
 
 
 #GOAL
-
+goald = d$GOAL_PROC
+goal = subset(goald, goald != "")
+par(mar=c(10,4,4,2))
+barplot(table(goal),las=2)
 
 #TYPE
 
