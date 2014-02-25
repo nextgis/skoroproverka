@@ -51,9 +51,21 @@ goald = d$GOAL_PROC
 goal = subset(goald, goald != "")
 par(mar=c(10,4,4,2))
 barplot(table(goal),las=2)
+par(mar=c(5, 4, 4, 2) + 0.1)
+
+#FORM
+form = d$OGRN_FORM
+barplot(table(form))
+num_ip = as.numeric(table(form)[2])
 
 #TYPE
-
+typed = d$TYPE_PROC
+type = subset(typed, typed != "")
+type = c("ИП" = num_ip,table(factor(type,levels = levels(type)[-1])))
+ylim = range(pretty(c(0, type)
+bp = barplot(type,las=2,ylim=ylim)
+nums = paste(type,"/",round(type*100/sum(type)),"%",sep = "")
+text(bp, type, labels = format(nums, 4),pos = 3, cex = .75)
 
 #OGRNREG
 ogrnregd = d$OGRN[nchar(d$OGRN) == 13]
