@@ -20,4 +20,5 @@ coming soon
 
 License
 -------------
-This program is licensed under GNU GPL v2 or any later version
+Code is licensed under GNU GPL v2 or any later version
+Data is available as public domain
