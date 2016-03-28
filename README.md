@@ -15,10 +15,13 @@ skoroproverka
  - постпроцессинг (чистка данных) - Python
  - расчеты и визуализации - R
 
-Сервис для конечных пользователей:
-coming soon
-
 License
 -------------
 Code is licensed under GNU GPL v2 or any later version
 Data is available as public domain
+
+Commercial support
+----------
+Need to fix a bug or add a feature to Skoroproverka? We provide custom development and support for this software. [Contact us](http://nextgis.ru/en/contact/) to discuss options!
+
+[![http://nextgis.com](http://nextgis.ru/img/nextgis.png)](http://nextgis.com)
